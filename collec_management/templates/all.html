@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}Liste des collections{% endblock %}
+
+{% block content %}
+
+<style>
+table, th, td {
+  border: 1px solid black;
+}
+</style>
+
+<table>
+	<tr><td>Titre</td> <td>Date</td> <td>Lire</td> <td>Supprimer</td> <td>Modifier</td></tr>
+	{% for c in collects %}
+		<tr><td>{{ c.title }}</td> <td>{{ c.date }}</td> <td><a href="{% url 'collection' c.id %}">Lien</a></td> <td><a href="{% url 'delete' c.id %}">Supprimer</a></td> <td><a href="{% url 'change' c.id %}">Modifier</a></td></tr>
+	{% endfor %}
+</table>
+{% endblock %}
